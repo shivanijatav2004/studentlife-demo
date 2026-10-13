@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Mini Portfolio</title>
+<style>
+    /* Reset */
+* { margin:0; padding:0; box-sizing:border-box; font-family:'Segoe UI', sans-serif; }
+
+/* Body */
+body { line-height:1.6; scroll-behavior:smooth; background:#f0f4f8; color:#333; }
+
+/* Header */
+header { background:#0078d7; color:white; padding:20px 0; position:sticky; top:0; z-index:1000; box-shadow:0 4px 6px rgba(0,0,0,0.1); }
+header .container { display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:auto; padding:0 20px; }
+header nav a { color:white; margin:0 15px; text-decoration:none; font-weight:600; transition:0.3s; }
+header nav a:hover { color:#ffeb3b; transform:scale(1.1); }
+
+/* Hero */
+.hero { text-align:center; padding:100px 20px; background:linear-gradient(to right,#e0f7fa,#ffffff); }
+.hero h2 { font-size:2.5em; margin-bottom:20px; }
+.hero p { font-size:1.2em; margin-bottom:30px; }
+.hero button { padding:12px 25px; border:none; border-radius:25px; background:#0078d7; color:white; cursor:pointer; transition:0.3s; }
+.hero button:hover { background:#005fa3; transform:translateY(-3px); }
+
+/* Sections */
+section { padding:60px 20px; text-align:center; max-width:1000px; margin:auto; opacity:0; transform:translateY(20px); transition:all 1s ease; }
+section.visible { opacity:1; transform:translateY(0); }
+section h2 { color:#0078d7; margin-bottom:20px; font-size:2em; position:relative; }
+section h2::after { content:''; width:60px; height:3px; background:#0078d7; display:block; margin:10px auto 0; border-radius:2px; }
+section p { font-size:1.1em; margin-bottom:30px; }
+
+/* Cards for services */
+.cards { display:flex; justify-content:space-around; flex-wrap:wrap; gap:20px; }
+.card { background:white; padding:20px; border-radius:15px; box-shadow:0 6px 15px rgba(0,0,0,0.1); flex:1 1 250px; transition:0.3s; }
+.card:hover { transform:translateY(-5px); box-shadow:0 10px 20px rgba(0,0,0,0.2); }
+.card h3 { color:#0078d7; margin-bottom:10px; }
+.card p { font-size:1em; }
+
+/* Contact */
+#contact { background:#f0f8ff; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.1); margin:40px auto; padding:60px 20px; max-width:700px; }
+#contact form { display:flex; flex-direction:column; gap:15px; margin-top:20px; }
+#contact input, #contact textarea { padding:12px 15px; border:1px solid #ccc; border-radius:10px; font-size:1em; resize:none; }
+#contact button { background:#0078d7; color:white; border:none; padding:12px; border-radius:25px; cursor:pointer; font-size:1em; transition:0.3s; }
+#contact button:hover { background:#005fa3; transform:translateY(-3px); }
+
+/* Footer */
+footer { background:#222; color:#ddd; text-align:center; padding:25px 10px; margin-top:40px; font-size:0.9em; }
+
+/* Responsive */
+@media(max-width:768px){ .cards{flex-direction:column;align-items:center;} }
+
+</style>
+</head>
+<body>
+
+<!-- Header / Navigation -->
+<header>
+  <div class="container">
+    <h1>My Portfolio</h1>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero">
+  <div class="container">
+    <h2>Hi, I'm Shivani</h2>
+    <p>Web Developer | Designer | Problem Solver</p>
+    <button id="hireBtn">Hire Me</button>
+  </div>
+</section>
+
+<!-- About Section -->
+<section id="about">
+  <div class="container">
+    <h2>About Me</h2>
+    <p>I build interactive and modern websites using HTML, CSS, and JavaScript. I love solving real-life web design challenges.</p>
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services">
+  <div class="container">
+    <h2>Services</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Web Design</h3>
+        <p>Modern and responsive web designs for businesses and personal portfolios.</p>
+      </div>
+      <div class="card">
+        <h3>Web Development</h3>
+        <p>Clean code using HTML, CSS, JS, and frameworks for real-life projects.</p>
+      </div>
+      <div class="card">
+        <h3>UI/UX</h3>
+        <p>User-friendly interfaces and experiences that delight visitors.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+  <div class="container">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="4" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Shivani's Portfolio | All Rights Reserved</p>
+</footer>
+
+<script>
+    // Scroll animation for sections
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY + window.innerHeight - 100;
+  sections.forEach(section => {
+    if(scrollY > section.offsetTop) section.classList.add('visible');
+  });
+});
+
+// Optional: Scroll to top when hiring button clicked
+document.getElementById('hireBtn').addEventListener('click', () => {
+  document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+});
+
+</script>
+</body>
+</html>
